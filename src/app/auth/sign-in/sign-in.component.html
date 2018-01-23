@@ -1,0 +1,30 @@
+<div class="card">
+    <div class="card-header">
+        Sign In
+    </div>
+    <div class="card-body">
+        <p class="text-center">Welcome to Property Management System. Please sign-in to your account.</p>
+        <form [formGroup]="signInForm" novalidate="novalidate" (ngSubmit)="signIn()">
+            <div class="form-group">
+                <label for="userName">Username</label>
+                <input type="text" class="form-control" [ngClass]="{'is-invalid': signInForm.controls['userName'].errors && !signInForm.controls['userName'].pristine}" id="userName" name="userName" formControlName="userName" placeholder="Username" required>                
+                <div *ngIf="signInForm.controls['userName'].errors && !signInForm.controls['userName'].pristine" class="invalid-feedback">
+                    <div [hidden]="!signInForm.controls['userName'].errors.required">Username is required.</div>
+                </div>
+            </div>
+            <div class="form-group">
+                <label for="password">Password</label>
+                <input type="password" class="form-control" [ngClass]="{'is-invalid': signInForm.controls['password'].errors && !signInForm.controls['password'].pristine}" id="password" name="password" formControlName="password" placeholder="Password" required>
+                <div *ngIf="signInForm.controls['password'].errors && !signInForm.controls['password'].pristine" class="invalid-feedback">
+                    <div [hidden]="!signInForm.controls['password'].errors.required">Password is required.</div>
+                </div>
+            </div>
+            <div class="form-group">
+                <button type="submit" class="btn btn-primary  btn-block" [disabled]="signInForm.invalid">Submit</button>
+            </div>
+        </form>
+        <a routerLink="/sign-up" class="card-link">Create new account</a>
+        <a routerLink="/forgot-password" class="card-link float-right">Forgot Password?</a>
+
+    </div>
+</div>
